@@ -1,6 +1,6 @@
 package com.rentadeherramientas.rentadeherramientas.domain.entity;
 
-import java.util.List;
+import java.time.LocalDate;
 
 import javax.tools.Tool;
 
@@ -10,28 +10,24 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "users")
-public class User {
+@Table(name = "damage_reports")
+public class DamageReport {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String username;
-    private String email;
-    private String password;
+    private String descripcion;
+    private LocalDate fechaReporte;
+
+    @OneToOne
+    @JoinColumn(name = "reservation_id")
+    private Reservation reservation;
 
     @ManyToOne
-    @JoinColumn(name = "role_id")
-    private Role role;
-
-    // Relaciones
-    @OneToMany(mappedBy = "cliente")
-    private List<Reservation> reservasHechas;
-
-    @OneToMany(mappedBy = "proveedor")
-    private List<Tool> herramientas;
+    @JoinColumn(name = "tool_id")
+    private Tool tool;
 }
