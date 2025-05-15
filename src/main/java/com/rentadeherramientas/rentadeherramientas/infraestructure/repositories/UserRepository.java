@@ -11,4 +11,5 @@ import com.rentadeherramientas.rentadeherramientas.domain.entity.User;
 public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findByUsername(String username);
     List<User> findByRoleName(RoleName roleName);
+    List<User> findByRole(RoleName admin);
 }
