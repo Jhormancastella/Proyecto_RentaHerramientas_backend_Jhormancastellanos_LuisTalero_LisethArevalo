@@ -5,35 +5,19 @@ import java.util.Optional;
 
 import javax.tools.Tool;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
-import com.rentadeherramientas.rentadeherramientas.infraestructure.repositories.ToolRepository;
-
 @Service
-public class ToolService {
+public interface ToolService {
+    List<Tool> findAll();
 
-    @Autowired
-    private ToolRepository toolRepository;
+    Tool save(Tool tool);
 
-    public List<Tool> findAll() {
-        return toolRepository.findAll();
-    }
+    boolean existsByName(String name);
 
-    public Tool save(Tool tool) {
-        return toolRepository.save(tool);
-    }
+    List<Tool> getAllTools();
 
-    public Optional<Tool> findById(Long id) {
-        return toolRepository.findById(id);
-    }
+    Optional<Tool> getToolById(Long id);
 
-    public void delete(Long id) {
-        toolRepository.deleteById(id);
-    }
-
-    public List<Tool> findByProveedor(Long proveedorId) {
-        return toolRepository.findByProveedorId(proveedorId);
-    }
+    Object findById(Long id);
 }

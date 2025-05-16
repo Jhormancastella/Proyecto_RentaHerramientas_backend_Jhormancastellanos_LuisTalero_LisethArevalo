@@ -2,7 +2,6 @@ package com.rentadeherramientas.rentadeherramientas.domain.entity;
 
 import java.time.LocalDate;
 
-import javax.tools.Tool;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;

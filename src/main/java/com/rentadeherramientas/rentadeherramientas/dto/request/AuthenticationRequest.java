@@ -1,4 +1,4 @@
-package com.appsecurity.app_security.dto;
+package com.rentadeherramientas.rentadeherramientas.dto.request;
 
 import java.io.Serializable;
 

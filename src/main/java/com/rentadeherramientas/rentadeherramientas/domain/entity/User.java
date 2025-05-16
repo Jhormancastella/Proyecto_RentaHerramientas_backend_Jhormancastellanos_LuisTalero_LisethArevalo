@@ -1,8 +1,8 @@
 package com.rentadeherramientas.rentadeherramientas.domain.entity;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
-
-import javax.tools.Tool;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -33,10 +33,9 @@ public class User {
     private List<Reservation> reservasHechas;
 
     @OneToMany(mappedBy = "proveedor")
-    private List<Tool> herramientas;
+    private List<Tool> herramientas; // Ahora usando la entidad Tool correcta
 
     // Getters y Setters
-
     public Long getId() {
         return id;
     }
@@ -93,8 +92,7 @@ public class User {
         this.herramientas = herramientas;
     }
 
-    // Métodos adicionales para compatibilidad con el código anterior
-
+    // Métodos adicionales
     public String getNombre() {
         return this.username;
     }
@@ -111,7 +109,21 @@ public class User {
     }
 
     public void setAdmin(boolean b) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setAdmin'");
+        if (this.role == null) {
+            this.role = new Role();
+        }
+        this.role.setName(b ? RoleName.ADMIN : RoleName.CLIENTE);
+    }
+
+    public Collection<String> getAuthorities() {
+        List<String> authorities = new ArrayList<>();
+        if (this.role != null && this.role.getName() != null) {
+            authorities.add(this.role.getName().name());
+        }
+        return authorities;
+    }
+
+    public String getName() {
+        return this.username;
     }
 }

@@ -1,7 +1,5 @@
-package com.appsecurity.app_security.service.auth;
+package com.rentadeherramientas.rentadeherramientas.aplication.services;
 
-import java.util.HashMap;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -10,12 +8,14 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
-import com.appsecurity.app_security.dto.AuthenticationRequest;
-import com.appsecurity.app_security.dto.AuthenticationResponse;
-import com.appsecurity.app_security.dto.RegisteredUser;
-import com.appsecurity.app_security.dto.SaveUser;
-import com.appsecurity.app_security.persistence.entity.User;
-import com.appsecurity.app_security.service.UserService;
+import com.rentadeherramientas.rentadeherramientas.domain.entity.User;
+import com.rentadeherramientas.rentadeherramientas.dto.request.AuthenticationRequest;
+import com.rentadeherramientas.rentadeherramientas.dto.response.AuthenticationResponse;
+
+import java.util.HashMap;
+import java.util.Map;
+
+
 
 @Service
 public class AuthenticationService {
@@ -32,7 +32,7 @@ public class AuthenticationService {
     public RegisteredUser registerOneCustomer(SaveUser newUser) {
         User user = userService.registrOneCustomer(newUser);
 
-        RegisteredUser userDto = new RegisteredUser();
+        AuthenticationResponse userDto = new AuthenticationResponse();
         userDto.setId(user.getId());
         userDto.setName(user.getName());
         userDto.setUsername(user.getUsername());
@@ -61,7 +61,7 @@ public class AuthenticationService {
 
         authenticationManager.authenticate(authentication);
 
-        UserDetails user = userService.findOneByUsername(autRequest.getUsername()).get();
+        UserDetails user = (UserDetails) userService.findOneByUsername(autRequest.getUsername());
         String jwt = jwtService.generateToken(user, generateExtraClaims((User) user));
 
         AuthenticationResponse authRsp = new AuthenticationResponse();

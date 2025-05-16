@@ -3,6 +3,7 @@ package com.rentadeherramientas.rentadeherramientas.aplication.services;
 
 import java.util.List;
 
+
 import com.rentadeherramientas.rentadeherramientas.domain.entity.User;
 public interface UserService {
     List<User> findAll();
@@ -30,4 +31,8 @@ public interface UserService {
     void deleteAdmin(Long id);
 
     List<User> getAllAdmins();
+
+    User registrOneCustomer(SaveUser newUser);
+
+    Object findOneByUsername(String username);
 }

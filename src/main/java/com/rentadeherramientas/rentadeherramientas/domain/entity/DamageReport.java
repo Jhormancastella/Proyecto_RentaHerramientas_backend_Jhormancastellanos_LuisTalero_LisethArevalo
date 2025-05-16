@@ -2,7 +2,6 @@ package com.rentadeherramientas.rentadeherramientas.domain.entity;
 
 import java.time.LocalDate;
 
-import javax.tools.Tool;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,5 +28,57 @@ public class DamageReport {
 
     @ManyToOne
     @JoinColumn(name = "tool_id")
-    private Tool tool;
+    private Tool tool; 
+
+    // Constructores, getters y setters
+    public DamageReport() {
+    }
+
+    public DamageReport(String descripcion, LocalDate fechaReporte, Reservation reservation, Tool tool) {
+        this.descripcion = descripcion;
+        this.fechaReporte = fechaReporte;
+        this.reservation = reservation;
+        this.tool = tool;
+    }
+
+    // Getters y Setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public LocalDate getFechaReporte() {
+        return fechaReporte;
+    }
+
+    public void setFechaReporte(LocalDate fechaReporte) {
+        this.fechaReporte = fechaReporte;
+    }
+
+    public Reservation getReservation() {
+        return reservation;
+    }
+
+    public void setReservation(Reservation reservation) {
+        this.reservation = reservation;
+    }
+
+    public Tool getTool() {
+        return tool;
+    }
+
+    public void setTool(Tool tool) {
+        this.tool = tool;
+    }
 }
