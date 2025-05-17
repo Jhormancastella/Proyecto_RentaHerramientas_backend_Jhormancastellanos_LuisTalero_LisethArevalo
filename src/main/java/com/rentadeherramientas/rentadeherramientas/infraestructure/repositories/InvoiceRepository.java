@@ -1,5 +1,5 @@
 package com.rentadeherramientas.rentadeherramientas.infraestructure.repositories;
 
-public class AppSecurityAppAplication {
+public interface InvoiceRepository {
 
 }
