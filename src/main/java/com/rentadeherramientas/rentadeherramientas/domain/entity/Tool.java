@@ -1,102 +1,56 @@
 package com.rentadeherramientas.rentadeherramientas.domain.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import java.time.LocalDate;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
+@Data
 @Entity
 @Table(name = "tools")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Tool {
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
-    private String nombre;
-    private String descripcion;
-    private String categoria;
-    private double costoPorDia;
-    private boolean disponible;
-    private LocalDate fechaAdquisicion;
-    private String estado; // "Disponible", "En reparación", "Fuera de servicio"
-    
-    // Constructores
-    public Tool() {
-    }
 
-    public Tool(String nombre, String descripcion, String categoria, 
-               double costoPorDia, boolean disponible, LocalDate fechaAdquisicion, 
-               String estado) {
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.categoria = categoria;
-        this.costoPorDia = costoPorDia;
-        this.disponible = disponible;
-        this.fechaAdquisicion = fechaAdquisicion;
-        this.estado = estado;
-    }
-    
-    // Getters y Setters
-    public Long getId() {
-        return id;
-    }
+    @NotBlank
+    @Size(max = 100)
+    private String name;
 
-    public String getNombre() {
-        return nombre;
-    }
+    @Size(max = 500)
+    private String description;
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+    @NotNull
+    @Positive
+    private BigDecimal dailyRate;
 
-    public String getDescripcion() {
-        return descripcion;
-    }
+    @NotNull
+    private Boolean available = true;
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
+    @Size(max = 100)
+    private String brand;
 
-    public String getCategoria() {
-        return categoria;
-    }
+    @Size(max = 50)
+    private String model;
 
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
-    }
+    @Size(max = 50)
+    private String serialNumber;
 
-    public double getCostoPorDia() {
-        return costoPorDia;
-    }
+    @Size(max = 100)
+    private String category;
 
-    public void setCostoPorDia(double costoPorDia) {
-        this.costoPorDia = costoPorDia;
-    }
+    @Size(max = 500)
+    private String condition;
 
-    public boolean isDisponible() {
-        return disponible;
-    }
-
-    public void setDisponible(boolean disponible) {
-        this.disponible = disponible;
-    }
-
-    public LocalDate getFechaAdquisicion() {
-        return fechaAdquisicion;
-    }
-
-    public void setFechaAdquisicion(LocalDate fechaAdquisicion) {
-        this.fechaAdquisicion = fechaAdquisicion;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "provider_id", nullable = false)
+    private User provider;
 }

@@ -1,50 +1,50 @@
 package com.rentadeherramientas.rentadeherramientas.domain.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Data
 @Entity
-@Table(name = "payments")
+@Table(name = "notifications")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Payment {
+public class Notification {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "reservation_id", nullable = false, unique = true)
-    private Reservation reservation;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
-    @NotNull
-    @Positive
-    private BigDecimal amount;
+    @NotBlank
+    @Column(length = 200)
+    private String title;
+
+    @NotBlank
+    @Column(length = 1000)
+    private String message;
 
     @NotNull
     @Enumerated(EnumType.STRING)
     @Column(length = 20)
-    private PaymentStatus status;
+    private NotificationType type;
 
     @NotNull
     @Enumerated(EnumType.STRING)
     @Column(length = 20)
-    private PaymentMethod method;
+    private NotificationStatus status = NotificationStatus.UNREAD;
 
-    private String transactionId;
+    private String link;
 
-    @Column(length = 500)
-    private String paymentDetails;
-
-    @Column(name = "payment_date")
-    private LocalDateTime paymentDate;
+    @Column(name = "read_at")
+    private LocalDateTime readAt;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt = LocalDateTime.now();

@@ -1,7 +1,11 @@
 package com.rentadeherramientas.rentadeherramientas.dto.response;
 
-import com.rentadeherramientas.rentadeherramientas.aplication.services.RegisteredUser;
+
+import java.util.Set;
+
 import com.rentadeherramientas.rentadeherramientas.domain.entity.RoleName;
+
+import nl._42.restsecure.autoconfigure.userdetails.RegisteredUser;
 
 public class AuthenticationResponse implements RegisteredUser {
 
@@ -33,6 +37,24 @@ public class AuthenticationResponse implements RegisteredUser {
     public void setRole(RoleName name) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'setRole'");
+    }
+
+    @Override
+    public Set<String> getAuthorities() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getAuthorities'");
+    }
+
+    @Override
+    public String getPassword() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getPassword'");
+    }
+
+    @Override
+    public String getUsername() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getUsername'");
     }
 
 }

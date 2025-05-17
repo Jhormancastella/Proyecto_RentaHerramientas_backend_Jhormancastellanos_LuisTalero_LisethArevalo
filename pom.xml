@@ -88,6 +88,15 @@
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
         </dependency>
+    <dependency>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-api</artifactId>
+</dependency>
+      <dependency>
+        <groupId>nl.42</groupId>
+        <artifactId>rest-secure-spring-boot-starter</artifactId>
+        <version>2.2.0</version>
+      </dependency>
     </dependencies>
 
     <build>

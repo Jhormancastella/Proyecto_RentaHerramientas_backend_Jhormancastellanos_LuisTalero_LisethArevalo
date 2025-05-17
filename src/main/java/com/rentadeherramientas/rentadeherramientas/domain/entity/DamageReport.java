@@ -1,84 +1,60 @@
 package com.rentadeherramientas.rentadeherramientas.domain.entity;
 
-import java.time.LocalDate;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
-
+@Data
 @Entity
 @Table(name = "damage_reports")
+@NoArgsConstructor
+@AllArgsConstructor
 public class DamageReport {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String descripcion;
-    private LocalDate fechaReporte;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "tool_id", nullable = false)
+    private Tool tool;
 
-    @OneToOne
-    @JoinColumn(name = "reservation_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "reservation_id", nullable = false)
     private Reservation reservation;
 
-    @ManyToOne
-    @JoinColumn(name = "tool_id")
-    private Tool tool; 
+    @NotNull
+    @Column(length = 500)
+    private String description;
 
-    // Constructores, getters y setters
-    public DamageReport() {
-    }
+    @Enumerated(EnumType.STRING)
+    @Column(length = 20)
+    private DamageLevel damageLevel;
 
-    public DamageReport(String descripcion, LocalDate fechaReporte, Reservation reservation, Tool tool) {
-        this.descripcion = descripcion;
-        this.fechaReporte = fechaReporte;
-        this.reservation = reservation;
-        this.tool = tool;
-    }
+    @Positive
+    private BigDecimal repairCost;
 
-    // Getters y Setters
-    public Long getId() {
-        return id;
-    }
+    @Enumerated(EnumType.STRING)
+    @Column(length = 20)
+    private DamageStatus status = DamageStatus.REPORTED;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @Column(length = 500)
+    private String repairNotes;
 
-    public String getDescripcion() {
-        return descripcion;
-    }
+    @Column(name = "report_date")
+    private LocalDateTime reportDate = LocalDateTime.now();
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
+    @Column(name = "repair_date")
+    private LocalDateTime repairDate;
 
-    public LocalDate getFechaReporte() {
-        return fechaReporte;
-    }
+    @Column(name = "created_at")
+    private LocalDateTime createdAt = LocalDateTime.now();
 
-    public void setFechaReporte(LocalDate fechaReporte) {
-        this.fechaReporte = fechaReporte;
-    }
-
-    public Reservation getReservation() {
-        return reservation;
-    }
-
-    public void setReservation(Reservation reservation) {
-        this.reservation = reservation;
-    }
-
-    public Tool getTool() {
-        return tool;
-    }
-
-    public void setTool(Tool tool) {
-        this.tool = tool;
-    }
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt = LocalDateTime.now();
 }
