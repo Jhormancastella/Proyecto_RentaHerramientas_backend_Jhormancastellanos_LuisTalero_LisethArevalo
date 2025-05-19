@@ -1,1 +1,0 @@
-package com.rentadeherramientas.rentadeherramientas.infrastructure.config;
