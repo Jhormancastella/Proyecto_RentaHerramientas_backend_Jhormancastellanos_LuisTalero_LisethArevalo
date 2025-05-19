@@ -9,4 +9,5 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
     List<Reservation> findByUserId(Long userId);
     List<Reservation> findByToolId(Long toolId);
     List<Reservation> findByStartDateBetween(LocalDateTime start, LocalDateTime end);
+    <Reserva> Reservation save(Reserva reserva);
 }
