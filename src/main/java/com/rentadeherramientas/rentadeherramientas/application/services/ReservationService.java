@@ -61,4 +61,46 @@ public class ReservationService {
             reservationRepository.deleteById(id);
         }
     }
+
+    // Métodos adicionales para compatibilidad con "Reserva"
+    @Transactional(readOnly = true)
+    public List<Reservation> getAllReservas() {
+        return reservationRepository.findAll();
+    }
+
+    @Transactional
+    public Reservation createReserva(Reservation reserva) {
+        Tool tool = reserva.getTool();
+        tool.setAvailable(false);
+        toolRepository.save(tool);
+        return reservationRepository.save(reserva);
+    }
+
+    @Transactional
+    public Reservation updateReserva(Long id, Reservation reserva) {
+        Optional<Reservation> existing = reservationRepository.findById(id);
+        if (existing.isPresent()) {
+            reserva.setId(id);
+            return reservationRepository.save(reserva);
+        }
+        throw new IllegalArgumentException("Reservation not found");
+    }
+
+    @Transactional
+    public boolean deleteReserva(Long id) {
+        Optional<Reservation> reservation = reservationRepository.findById(id);
+        if (reservation.isPresent()) {
+            Tool tool = reservation.get().getTool();
+            tool.setAvailable(true);
+            toolRepository.save(tool);
+            reservationRepository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
+
+    @Transactional(readOnly = true)
+    public Reservation getReservaById(Long id) {
+        return reservationRepository.findById(id).orElse(null);
+    }
 }

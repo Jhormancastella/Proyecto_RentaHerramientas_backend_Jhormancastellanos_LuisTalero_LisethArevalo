@@ -57,4 +57,29 @@ public class DamageReport {
 
     @Column(name = "updated_at")
     private LocalDateTime updatedAt = LocalDateTime.now();
+
+    public Object getDateReported() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getDateReported'");
+    }
+
+    public void setDateReported(Object dateReported) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setDateReported'");
+    }
+
+    public Object map(Object object) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'map'");
+    }
+
+    public Object map(Object object) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'map'");
+    }
+
+    public Object map(Object object) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'map'");
+    }
 }

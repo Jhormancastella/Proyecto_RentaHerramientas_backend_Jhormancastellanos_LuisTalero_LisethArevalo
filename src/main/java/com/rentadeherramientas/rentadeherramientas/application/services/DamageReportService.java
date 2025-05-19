@@ -48,4 +48,44 @@ public class DamageReportService {
     public void deleteDamageReport(Long id) {
         damageReportRepository.deleteById(id);
     }
+
+    @Transactional
+    public DamageReport update(Long id, DamageReport damageReport) {
+        Optional<DamageReport> existing = damageReportRepository.findById(id);
+        if (existing.isPresent()) {
+            DamageReport reportToUpdate = existing.get();
+            reportToUpdate.setDescription(damageReport.getDescription());
+            reportToUpdate.setTool(damageReport.getTool());
+            reportToUpdate.setDateReported(damageReport.getDateReported());
+            // Add other fields as needed
+            return damageReportRepository.save(reportToUpdate);
+        } else {
+            throw new IllegalArgumentException("DamageReport not found with id: " + id);
+        }
+    }
+
+    @Transactional(readOnly = true)
+    public DamageReport getById(Long id) {
+        return damageReportRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("DamageReport not found with id: " + id));
+    }
+
+    @Transactional(readOnly = true)
+    public List<DamageReport> getAll() {
+        return damageReportRepository.findAll();
+    }
+
+    @Transactional
+    public DamageReport save(DamageReport damageReport) {
+        return damageReportRepository.save(damageReport);
+    }
+
+    @Transactional
+    public boolean delete(Long id) {
+        if (damageReportRepository.existsById(id)) {
+            damageReportRepository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
 }

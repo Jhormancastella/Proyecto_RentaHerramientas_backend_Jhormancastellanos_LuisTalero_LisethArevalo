@@ -48,4 +48,25 @@ public class ToolService {
     public void deleteTool(Long id) {
         toolRepository.deleteById(id);
     }
+
+    public com.rentadeherramientas.rentadeherramientas.infrastructure.controllers.Tool save(
+            com.rentadeherramientas.rentadeherramientas.infrastructure.controllers.Tool tool) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'save'");
+    }
+
+    public boolean deleteById(Long id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'deleteById'");
+    }
+
+    public com.rentadeherramientas.rentadeherramientas.infrastructure.controllers.Tool findById(Long id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findById'");
+    }
+
+    public List<com.rentadeherramientas.rentadeherramientas.infrastructure.controllers.Tool> findAll() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findAll'");
+    }
 }
