@@ -5,7 +5,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 
 public class AuthenticationManager {
 
-    public void authenticate(UsernamePasswordAuthenticationToken authentication) {
+    public void authenticate(com.rentadeherramientas.rentadeherramientas.domain.entity.UsernamePasswordAuthenticationToken authentication) {
         if (authentication == null) {
             throw new IllegalArgumentException("Authentication object cannot be null");
         }
