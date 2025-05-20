@@ -97,6 +97,12 @@
         <artifactId>rest-secure-spring-boot-starter</artifactId>
         <version>2.2.0</version>
       </dependency>
+    
+      <dependency>
+        <groupId>org.apache.servicemix.bundles</groupId>
+        <artifactId>org.apache.servicemix.bundles.spring-websocket</artifactId>
+        <version>4.3.30.RELEASE_1</version>
+      </dependency>
     </dependencies>
 
     <build>
