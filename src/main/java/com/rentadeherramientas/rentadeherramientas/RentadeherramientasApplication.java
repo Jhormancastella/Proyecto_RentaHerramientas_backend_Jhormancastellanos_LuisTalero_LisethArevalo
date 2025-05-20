@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 @SpringBootApplication
 public class RentadeherramientasApplication {
 
+<<<<<<< HEAD
     private static final Logger logger = LoggerFactory.getLogger(RentadeherramientasApplication.class);
 
     public static void main(String[] args) {
@@ -19,3 +20,10 @@ public class RentadeherramientasApplication {
         logger.info("Aplicación iniciada exitosamente!");
     }
 }
+=======
+    public static void main(String[] args) {
+        SpringApplication.run(RentadeherramientasApplication.class, args);
+    }
+
+}
+>>>>>>> feature/add-provedores
