@@ -1,4 +1,4 @@
-package com.rentadeherramientas.rentadeherramientas.aplication.services;
+package com.rentadeherramientas.rentadeherramientas.application.services;
 
 import java.util.List;
 import java.util.Optional;
