@@ -1,14 +1,34 @@
 package com.rentadeherramientas.rentadeherramientas.Config;
 
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.stereotype.Component;
 
-
-public interface AuthorizationManager {
-    boolean hasRole(Authentication authentication, String role);
+@Component
+public class AuthorizationManager {
     
-    boolean hasAnyRole(Authentication authentication, String... roles);
+    public boolean hasRole(Authentication authentication, String role) {
+        return authentication != null && authentication.getAuthorities().stream()
+                .anyMatch(a -> a.getAuthority().equals(role));
+    }
     
-    boolean isAuthenticated(Authentication authentication);
+    public boolean hasAnyRole(Authentication authentication, String... roles) {
+        if (authentication == null) return false;
+        return authentication.getAuthorities().stream()
+                .map(a -> a.getAuthority())
+                .anyMatch(role -> {
+                    for (String r : roles) {
+                        if (role.equals(r)) return true;
+                    }
+                    return false;
+                });
+    }
     
-    boolean hasPermission(Authentication authentication, String permission);
+    public boolean isAuthenticated(Authentication authentication) {
+        return authentication != null && authentication.isAuthenticated();
+    }
+    
+    public boolean hasPermission(Authentication authentication, String permission) {
+        return hasRole(authentication, "ROLE_" + permission.toUpperCase());
+    }
 }

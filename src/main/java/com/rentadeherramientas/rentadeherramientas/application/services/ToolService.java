@@ -48,4 +48,14 @@ public class ToolService {
     public void deleteTool(Long id) {
         toolRepository.deleteById(id);
     }
+
+    @Transactional
+    public Tool saveTool(Tool tool) {
+        return toolRepository.save(tool);
+    }
+    @Transactional
+    public Optional<Tool> updateTool(Long id, Tool tool) {
+        return null;
+
+    }
 }
