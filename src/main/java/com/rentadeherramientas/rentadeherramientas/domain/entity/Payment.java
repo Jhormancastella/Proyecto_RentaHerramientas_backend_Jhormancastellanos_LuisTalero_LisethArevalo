@@ -22,7 +22,7 @@ public class Payment {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "reservation_id", nullable = false, unique = true)
-    private Reservation reservation;
+    private Reservation reservation; // Relación con Reservation
 
     @NotNull
     @Positive
@@ -31,12 +31,12 @@ public class Payment {
     @NotNull
     @Enumerated(EnumType.STRING)
     @Column(length = 20)
-    private PaymentStatus status;
+    private PaymentStatus status; // Enum: PENDING, COMPLETED, FAILED
 
     @NotNull
     @Enumerated(EnumType.STRING)
     @Column(length = 20)
-    private PaymentMethod method;
+    private PaymentMethod method; // Enum: CREDIT_CARD, PAYPAL, CASH
 
     private String transactionId;
 
@@ -46,7 +46,7 @@ public class Payment {
     @Column(name = "payment_date")
     private LocalDateTime paymentDate;
 
-    @Column(name = "created_at")
+    @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
 
     @Column(name = "updated_at")

@@ -5,9 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
 @Entity
 @Table(name = "roles")
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Role {
@@ -16,9 +16,11 @@ public class Role {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    @Column(length = 20, nullable = false, unique = true)
+    @Column(unique = true, nullable = false)
     private RoleName name;
 
-    @Column(length = 255)
-    private String description;
+    // Constructor para crear roles fácilmente
+    public Role(RoleName name) {
+        this.name = name;
+    }
 }
