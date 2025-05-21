@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.rentadeherramientas.rentadeherramientas.domain.entity.User;
-import com.rentadeherramientas.rentadeherramientas.infrastructure.repository.UserRepository;
+import com.rentadeherramientas.rentadeherramientas.infraestructure.repositories.UserRepository;
 
 import java.util.stream.Collectors;
 

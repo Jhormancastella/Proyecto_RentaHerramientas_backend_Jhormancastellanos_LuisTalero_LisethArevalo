@@ -1,4 +1,4 @@
-package com.rentadeherramientas.rentadeherramientas.infrastructure.controllers;
+package com.rentadeherramientas.rentadeherramientas.infraestructure.controllers;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.ArrayList;

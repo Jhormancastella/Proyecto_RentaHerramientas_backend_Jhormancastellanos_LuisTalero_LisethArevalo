@@ -1,7 +1,8 @@
 package com.rentadeherramientas.rentadeherramientas.application.services;
 
 import com.rentadeherramientas.rentadeherramientas.domain.entity.User;
-import com.rentadeherramientas.rentadeherramientas.infrastructure.repository.UserRepository;
+import com.rentadeherramientas.rentadeherramientas.infraestructure.repositories.UserRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;

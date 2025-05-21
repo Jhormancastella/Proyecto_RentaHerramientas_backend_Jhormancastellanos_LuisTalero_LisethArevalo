@@ -1,4 +1,4 @@
-package com.rentadeherramientas.rentadeherramientas.infrastructure.controllers;
+package com.rentadeherramientas.rentadeherramientas.infraestructure.controllers;
 
 import java.util.HashMap;
 

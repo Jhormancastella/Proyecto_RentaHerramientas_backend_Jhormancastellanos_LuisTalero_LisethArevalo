@@ -1,4 +1,4 @@
-package com.rentadeherramientas.rentadeherramientas.infrastructure.repository;
+package com.rentadeherramientas.rentadeherramientas.infraestructure.repositories;
 
 import com.rentadeherramientas.rentadeherramientas.domain.entity.Admin;
 

@@ -1,8 +1,7 @@
 package com.rentadeherramientas.rentadeherramientas.application.services;
 
+import com.rentadeherramientas.rentadeherramientas.infraestructure.repositories.ToolRepository;
 import com.rentadeherramientas.rentadeherramientas.domain.entity.Tool;
-import com.rentadeherramientas.rentadeherramientas.infrastructure.repository.ToolRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -47,26 +46,5 @@ public class ToolService {
     @Transactional
     public void deleteTool(Long id) {
         toolRepository.deleteById(id);
-    }
-
-    public com.rentadeherramientas.rentadeherramientas.infrastructure.controllers.Tool save(
-            com.rentadeherramientas.rentadeherramientas.infrastructure.controllers.Tool tool) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'save'");
-    }
-
-    public boolean deleteById(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteById'");
-    }
-
-    public com.rentadeherramientas.rentadeherramientas.infrastructure.controllers.Tool findById(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findById'");
-    }
-
-    public List<com.rentadeherramientas.rentadeherramientas.infrastructure.controllers.Tool> findAll() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findAll'");
     }
 }
