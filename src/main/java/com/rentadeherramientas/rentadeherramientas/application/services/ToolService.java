@@ -48,4 +48,19 @@ public class ToolService {
     public void deleteTool(Long id) {
         toolRepository.deleteById(id);
     }
+
+    @Transactional
+    public Tool saveTool(Tool tool) {
+        return toolRepository.save(tool);
+    }
+
+    @Transactional
+    public Tool updateTool(Long id, Tool tool) {
+        Optional<Tool> existingTool = toolRepository.findById(id);
+        if (existingTool.isPresent()) {
+            tool.setId(id);
+            return toolRepository.save(tool);
+        }
+        throw new RuntimeException("Tool not found with id: " + id);
+    }
 }
