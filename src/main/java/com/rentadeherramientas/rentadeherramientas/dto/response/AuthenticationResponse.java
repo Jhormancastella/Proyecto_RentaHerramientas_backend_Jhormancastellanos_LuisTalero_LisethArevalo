@@ -10,6 +10,12 @@ import nl._42.restsecure.autoconfigure.userdetails.RegisteredUser;
 public class AuthenticationResponse implements RegisteredUser {
 
     private String jwt;
+    private Long id;
+    private String name;
+    private String username;
+    private Set<String> authorities;
+    private String password;
+    private RoleName role;
 
     public String getJwt() {
         return jwt;
@@ -19,42 +25,34 @@ public class AuthenticationResponse implements RegisteredUser {
         this.jwt = jwt;
     }
 
-    public void setId(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setId'");
-    }
-
-    public void setName(String name) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setName'");
-    }
-
-    public void setUsername(String username) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setUsername'");
-    }
-
-    public void setRole(RoleName name) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setRole'");
-    }
-
     @Override
     public Set<String> getAuthorities() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAuthorities'");
+        return authorities;
     }
 
     @Override
     public String getPassword() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getPassword'");
+        return password;
     }
 
     @Override
     public String getUsername() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getUsername'");
+        return username;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setRole(RoleName name) {
+        this.role = name;
+    }
 }
