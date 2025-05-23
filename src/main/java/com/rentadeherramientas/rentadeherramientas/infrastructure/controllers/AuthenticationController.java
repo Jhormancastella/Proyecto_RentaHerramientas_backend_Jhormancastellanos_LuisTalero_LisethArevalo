@@ -18,7 +18,6 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "*")
 @RequiredArgsConstructor
 public class AuthenticationController {
     
@@ -27,7 +26,7 @@ public class AuthenticationController {
     private final UserService userService;
     private final CustomUserDetailsService userDetailsService;
 
-    @PostMapping("/authenticate")
+    @PostMapping(value = "/authenticate", produces = "application/json")
     public ResponseEntity<AuthenticationResponse> authenticate(
             @RequestBody AuthenticationRequest request) {
         try {
