@@ -8,7 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
+
 
 @Data
 @Entity
@@ -29,7 +29,7 @@ public class Producto {
 
     @NotNull
     @Positive
-    private BigDecimal precio;
+    private Double precio;
 
     @NotNull
     private Integer stock;
@@ -40,4 +40,12 @@ public class Producto {
     private String imagenUrl;
 
     private boolean disponible = true;
+
+    public void setPrecio(Double precio) {
+        this.precio = precio;
+    }
+
+    public Double getPrecio() {
+        return this.precio;
+    }
 }

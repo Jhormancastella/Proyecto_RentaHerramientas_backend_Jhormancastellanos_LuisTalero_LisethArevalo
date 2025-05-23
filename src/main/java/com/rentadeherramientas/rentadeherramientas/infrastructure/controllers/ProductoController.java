@@ -1,6 +1,6 @@
-package com.rentadeherramientas.rentadeherramientas.infraestructure.controllers;
+package com.rentadeherramientas.rentadeherramientas.infrastructure.controllers;
 
-import java.util.List;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -26,8 +26,8 @@ public class ProductoController {
     public ResponseEntity<Object> obtenerProductoPorId(@PathVariable Long id) {
         return ResponseEntity.ok(productoService.obtenerPorId(id));
     }
-    @GetMapping("/categoria/{id}")
-    public ResponseEntity<Object> obtenerProductosPorCategoria(@PathVariable Long id) {
-        return ResponseEntity.ok(productoService.obtenerPorCategoria(id));
+    @GetMapping("/categoria/{categoria}")
+    public ResponseEntity<Object> obtenerProductosPorCategoria(@PathVariable String categoria) {
+        return ResponseEntity.ok(productoService.obtenerPorCategoria(categoria));
     }
 }

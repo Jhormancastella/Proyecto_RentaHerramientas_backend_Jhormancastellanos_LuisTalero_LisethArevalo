@@ -2,7 +2,7 @@ package com.rentadeherramientas.rentadeherramientas.application.services;
 
 
 import com.rentadeherramientas.rentadeherramientas.domain.entity.DamageReport;
-import com.rentadeherramientas.rentadeherramientas.infraestructure.repositories.DamageReportRepository;
+import com.rentadeherramientas.rentadeherramientas.infrastructure.repositories.DamageReportRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

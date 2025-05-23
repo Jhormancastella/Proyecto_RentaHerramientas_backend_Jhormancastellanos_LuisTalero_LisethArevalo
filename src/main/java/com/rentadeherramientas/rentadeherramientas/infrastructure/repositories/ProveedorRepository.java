@@ -1,6 +1,7 @@
-package com.rentadeherramientas.rentadeherramientas.infraestructure.repositories;
+package com.rentadeherramientas.rentadeherramientas.infrastructure.repositories;
 
 import com.rentadeherramientas.rentadeherramientas.domain.entity.Proveedor;
+import com.rentadeherramientas.rentadeherramientas.domain.entity.Producto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -19,4 +20,6 @@ public interface ProveedorRepository extends JpaRepository<Proveedor, Long> {
 
     // Buscar proveedores por ciudad
     List<Proveedor> findByCiudad(String ciudad);
+
+    boolean existsByNombre(String nombre);
 }

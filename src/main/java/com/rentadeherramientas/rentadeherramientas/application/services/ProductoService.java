@@ -4,13 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.rentadeherramientas.rentadeherramientas.domain.entity.Producto;
-import com.rentadeherramientas.rentadeherramientas.infraestructure.repositories.ProductoRepository;
+import com.rentadeherramientas.rentadeherramientas.infrastructure.repositories.ProductoRepository;
 
+import java.util.List;
 import java.util.Optional;
-
-
-
-
 
 @Service
 public class ProductoService {
@@ -27,14 +24,12 @@ public class ProductoService {
         return producto.orElse(null);
     }
 
-    public Object obtenerPorCategoria(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'obtenerPorCategoria'");
+    public List<Producto> obtenerPorCategoria(String categoria) {
+        return productoRepository.findByCategoria(categoria);
     }
 
-    public Object obtenerTodos() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'obtenerTodos'");
+    public List<Producto> obtenerTodos() {
+        return productoRepository.findAll();
     }
 
     // Puedes agregar más métodos según sea necesario

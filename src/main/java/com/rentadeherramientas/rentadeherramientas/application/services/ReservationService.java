@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.rentadeherramientas.rentadeherramientas.domain.entity.Reservation;
-import com.rentadeherramientas.rentadeherramientas.infraestructure.repositories.ReservationRepository;
+import com.rentadeherramientas.rentadeherramientas.infrastructure.repositories.ReservationRepository;
 
 import java.util.List;
 import java.util.Optional;

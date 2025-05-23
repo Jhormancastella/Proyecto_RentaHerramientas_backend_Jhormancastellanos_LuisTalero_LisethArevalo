@@ -1,4 +1,4 @@
-package com.rentadeherramientas.rentadeherramientas.infraestructure.controllers;
+package com.rentadeherramientas.rentadeherramientas.infrastructure.controllers;
 
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;

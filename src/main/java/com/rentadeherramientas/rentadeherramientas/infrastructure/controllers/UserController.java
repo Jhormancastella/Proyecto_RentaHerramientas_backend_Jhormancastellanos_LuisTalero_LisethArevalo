@@ -1,4 +1,4 @@
-package com.rentadeherramientas.rentadeherramientas.infraestructure.controllers;
+package com.rentadeherramientas.rentadeherramientas.infrastructure.controllers;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/api/users")
 @CrossOrigin(origins = "*")
 public class UserController {
 

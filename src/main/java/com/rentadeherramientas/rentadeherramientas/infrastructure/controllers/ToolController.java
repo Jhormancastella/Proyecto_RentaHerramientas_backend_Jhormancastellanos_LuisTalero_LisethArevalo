@@ -1,4 +1,4 @@
-package com.rentadeherramientas.rentadeherramientas.infraestructure.controllers;
+package com.rentadeherramientas.rentadeherramientas.infrastructure.controllers;
 
 import com.rentadeherramientas.rentadeherramientas.application.services.ToolService;
 import com.rentadeherramientas.rentadeherramientas.domain.entity.Tool;

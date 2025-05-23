@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.rentadeherramientas.rentadeherramientas.domain.entity.User;
-import com.rentadeherramientas.rentadeherramientas.infraestructure.repositories.UserRepository;
+import com.rentadeherramientas.rentadeherramientas.infrastructure.repositories.UserRepository;
 
 import java.util.stream.Collectors;
 
@@ -20,7 +20,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username)
+        User user = userRepository.findByUsernameWithRoles(username)
             .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
 
         var authorities = user.getRoles().stream()

@@ -1,4 +1,4 @@
-package com.rentadeherramientas.rentadeherramientas.infraestructure.repositories;
+package com.rentadeherramientas.rentadeherramientas.infrastructure.repositories;
 
 import com.rentadeherramientas.rentadeherramientas.domain.entity.Notification;
 import org.springframework.data.jpa.repository.JpaRepository;

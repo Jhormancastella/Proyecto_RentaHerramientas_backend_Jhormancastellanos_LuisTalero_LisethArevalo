@@ -1,7 +1,7 @@
 package com.rentadeherramientas.rentadeherramientas.application.services;
 
 import com.rentadeherramientas.rentadeherramientas.domain.entity.Notification;
-import com.rentadeherramientas.rentadeherramientas.infraestructure.repositories.NotificationRepository;
+import com.rentadeherramientas.rentadeherramientas.infrastructure.repositories.NotificationRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
