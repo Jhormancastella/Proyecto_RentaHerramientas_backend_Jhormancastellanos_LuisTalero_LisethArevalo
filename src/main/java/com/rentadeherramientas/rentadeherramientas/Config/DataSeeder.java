@@ -30,6 +30,20 @@ public class DataSeeder implements CommandLineRunner {
         Role proveedorRole = roleRepository.findByName(RoleName.ROLE_PROVIDER)
             .orElseGet(() -> roleRepository.save(new Role(RoleName.ROLE_PROVIDER)));
 
+        // Usuarios administradores
+        String adminUsername = "admin";
+        if (!userRepository.existsByUsername(adminUsername)) {
+            User admin = new User();
+            admin.setUsername(adminUsername);
+            admin.setPassword(passwordEncoder.encode("admin123"));
+            admin.setEmail("admin@email.com");
+            admin.setFirstName("Admin");
+            admin.setLastName("Admin");
+            admin.setActive(true);
+            admin.getRoles().add(adminRole);
+            userRepository.save(admin);
+        }
+
         // Usuarios normales
         for (int i = 1; i <= 5; i++) {
             String username = "user" + i;
