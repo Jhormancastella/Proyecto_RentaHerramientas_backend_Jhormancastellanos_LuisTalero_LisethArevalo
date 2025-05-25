@@ -8,40 +8,44 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
+
 
 @Data
 @Entity
-@Table(name = "tools")
+@Table(name = "productos")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Tool {
+public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank
     @Column(length = 100)
-    private String name;
-
-    @NotBlank
-    @Column(length = 50, unique = true)
-    private String serialNumber;
+    private String nombre;
 
     @Column(length = 500)
-    private String description;
+    private String descripcion;
 
     @NotNull
     @Positive
-    private BigDecimal rentalPrice;
+    private Double precio;
 
     @NotNull
     private Integer stock;
 
-    private String category;
+    private String categoria;
 
     @Column(length = 200)
-    private String imageUrl;
+    private String imagenUrl;
 
-    private boolean available = true;
+    private boolean disponible = true;
+
+    public void setPrecio(Double precio) {
+        this.precio = precio;
+    }
+
+    public Double getPrecio() {
+        return this.precio;
+    }
 }

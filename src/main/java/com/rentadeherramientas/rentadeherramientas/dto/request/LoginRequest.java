@@ -12,7 +12,6 @@ public class LoginRequest {
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
     public String getUsername() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getUsername'");
+        return this.email;
     }
 }
