@@ -90,20 +90,10 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
 public CorsFilter corsFilter() {
     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
     CorsConfiguration config = new CorsConfiguration();
-    
-    // Essential CORS settings
     config.setAllowCredentials(true);
-    config.addAllowedOrigin("http://127.0.0.1:5503");
+    config.addAllowedOriginPattern("*"); // O especifica tu frontend: "http://127.0.0.1:5500"
     config.addAllowedHeader("*");
     config.addAllowedMethod("*");
-    
-    // Security headers
-    config.addExposedHeader("Authorization");
-    config.addExposedHeader("X-XSRF-TOKEN");
-    
-    // Max age for preflight
-    config.setMaxAge(3600L);
-    
     source.registerCorsConfiguration("/**", config);
     return new CorsFilter(source);
 }
