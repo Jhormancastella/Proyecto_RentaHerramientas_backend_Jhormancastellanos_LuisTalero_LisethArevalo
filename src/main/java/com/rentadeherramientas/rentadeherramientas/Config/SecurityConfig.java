@@ -68,8 +68,13 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .authorizeHttpRequests(auth -> auth
             .requestMatchers("/api/auth/**").permitAll()
-            .requestMatchers(org.springframework.http.HttpMethod.POST, "/api/users").permitAll() // Permite registro sin login
-            .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/productos", "/api/productos/**").permitAll() // <-- Agrega esta línea
+            .requestMatchers(org.springframework.http.HttpMethod.POST, "/api/users").permitAll()
+            .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/productos", "/api/productos/**").permitAll()
+            .requestMatchers(
+                "/v3/api-docs/**",
+                "/swagger-ui/**",
+                "/swagger-ui.html"
+            ).permitAll() // <-- Agrega esto para Swagger/OpenAPI
             .anyRequest().authenticated()
         )
         .exceptionHandling(exception -> exception
