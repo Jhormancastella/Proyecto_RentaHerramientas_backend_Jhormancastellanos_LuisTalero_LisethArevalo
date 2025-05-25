@@ -509,8 +509,7 @@ public WebMvcConfigurer corsConfigurer() {
   </div>
 </div>
 
-## enlace a Repositorio del Front-end.
-
+---
 
 <div style="display: flex; gap: 20px; align-items: center; margin-top: 15px;">
   <img src="https://avatars.githubusercontent.com/u/123456789?v=4" width="60" style="border-radius: 50%;">
@@ -521,6 +520,7 @@ public WebMvcConfigurer corsConfigurer() {
   </div>
 </div>
 
+---
 
 <div style="display: flex; gap: 20px; align-items: center; margin-top: 15px;">
   <img src="https://avatars.githubusercontent.com/u/123456789?v=4" width="60" style="border-radius: 50%;">
