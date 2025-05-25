@@ -32,5 +32,31 @@ public class ProductoService {
         return productoRepository.findAll();
     }
 
+    public Producto crearProducto(Producto producto) {
+        return productoRepository.save(producto);
+    }
+
+    public Producto actualizarProducto(Long id, Producto producto) {
+        Optional<Producto> existente = productoRepository.findById(id);
+        if (existente.isPresent()) {
+            Producto prod = existente.get();
+            prod.setNombre(producto.getNombre());
+            prod.setDescripcion(producto.getDescripcion());
+            prod.setPrecio(producto.getPrecio());
+            prod.setStock(producto.getStock());
+            prod.setCategoria(producto.getCategoria());
+            prod.setDisponible(producto.isDisponible());
+            prod.setImagenUrl(producto.getImagenUrl());
+            // Agrega aquí otros campos si es necesario
+            return productoRepository.save(prod);
+        } else {
+            return null;
+        }
+    }
+
+    public void eliminarProducto(Long id) {
+        productoRepository.deleteById(id);
+    }
+
     // Puedes agregar más métodos según sea necesario
 }

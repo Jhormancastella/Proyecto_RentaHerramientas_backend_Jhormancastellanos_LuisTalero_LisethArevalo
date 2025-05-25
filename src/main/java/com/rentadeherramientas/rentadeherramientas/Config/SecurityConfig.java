@@ -69,6 +69,7 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
         .authorizeHttpRequests(auth -> auth
             .requestMatchers("/api/auth/**").permitAll()
             .requestMatchers(org.springframework.http.HttpMethod.POST, "/api/users").permitAll() // Permite registro sin login
+            .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/productos", "/api/productos/**").permitAll() // <-- Agrega esta línea
             .anyRequest().authenticated()
         )
         .exceptionHandling(exception -> exception
