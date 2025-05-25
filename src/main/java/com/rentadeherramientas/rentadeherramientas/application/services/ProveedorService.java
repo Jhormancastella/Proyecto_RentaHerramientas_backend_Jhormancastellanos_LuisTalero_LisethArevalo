@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.rentadeherramientas.rentadeherramientas.domain.entity.Proveedor;
-import com.rentadeherramientas.rentadeherramientas.infraestructure.repositories.ProveedorRepository;
+import com.rentadeherramientas.rentadeherramientas.infrastructure.repositories.ProveedorRepository;
 
 @Service
 public class ProveedorService {
