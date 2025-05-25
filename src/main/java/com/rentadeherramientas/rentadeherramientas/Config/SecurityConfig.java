@@ -67,7 +67,8 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
         .cors(Customizer.withDefaults())
         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .authorizeHttpRequests(auth -> auth
-            .requestMatchers("/api/auth/**", "/users/**").permitAll()
+            .requestMatchers("/api/auth/**").permitAll()
+            .requestMatchers(org.springframework.http.HttpMethod.POST, "/api/users").permitAll() // Permite registro sin login
             .anyRequest().authenticated()
         )
         .exceptionHandling(exception -> exception
