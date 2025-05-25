@@ -60,13 +60,22 @@ public class User {
         inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
-    public void setRole(Role role) {
+    public void setRole(String roleName) {
+        Role role = new Role();
+        role.setName(RoleName.valueOf("ROLE_" + roleName.toUpperCase()));
         this.roles.clear();
         this.roles.add(role);
     }
 
-    public void addRole(Role role) {
+    public void addRole(RoleName roleName) {
+        Role role = new Role();
+        role.setName(roleName);
         this.roles.add(role);
+    }
+
+    public boolean hasRole(RoleName roleName) {
+        return roles.stream()
+                .anyMatch(role -> role.getName() == roleName);
     }
 
     public Set<Role> getRoles() {

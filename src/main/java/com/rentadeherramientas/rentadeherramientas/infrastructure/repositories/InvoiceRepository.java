@@ -1,4 +1,4 @@
-package com.rentadeherramientas.rentadeherramientas.infrastructure.repository;
+package com.rentadeherramientas.rentadeherramientas.infrastructure.repositories;
 
 import com.rentadeherramientas.rentadeherramientas.domain.entity.Invoice;
 import org.springframework.data.jpa.repository.JpaRepository;

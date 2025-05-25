@@ -1,7 +1,8 @@
 package com.rentadeherramientas.rentadeherramientas.application.services;
 
 import com.rentadeherramientas.rentadeherramientas.domain.entity.Invoice;
-import com.rentadeherramientas.rentadeherramientas.infrastructure.repository.InvoiceRepository;
+import com.rentadeherramientas.rentadeherramientas.infrastructure.repositories.InvoiceRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

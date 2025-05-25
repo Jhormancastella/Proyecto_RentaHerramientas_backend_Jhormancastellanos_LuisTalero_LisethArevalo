@@ -97,6 +97,29 @@
         <artifactId>rest-secure-spring-boot-starter</artifactId>
         <version>2.2.0</version>
       </dependency>
+    
+      <dependency>
+        <groupId>com.gitee.hjj520</groupId>
+        <artifactId>payment-core</artifactId>
+        <version>0.0.1-RELEASE</version>
+      </dependency>
+    
+      <dependency>
+        <groupId>com.h2database</groupId>
+        <artifactId>h2</artifactId>
+        <version>1.4.199</version>
+      </dependency>
+    
+      <dependency>
+        <groupId>com.devonfw.tools.IDEasy</groupId>
+        <artifactId>ide-cli</artifactId>
+        <version>2025.05.001</version>
+      </dependency>
+      <dependency>
+    <groupId>org.springdoc</groupId>
+    <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+    <version>2.5.0</version>
+</dependency>
     </dependencies>
 
     <build>

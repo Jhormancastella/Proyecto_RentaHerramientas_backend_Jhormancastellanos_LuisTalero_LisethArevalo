@@ -1,7 +1,7 @@
 package com.rentadeherramientas.rentadeherramientas.application.services;
 
 import com.rentadeherramientas.rentadeherramientas.domain.entity.User;
-import com.rentadeherramientas.rentadeherramientas.infrastructure.repository.UserRepository;
+import com.rentadeherramientas.rentadeherramientas.infrastructure.repositories.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
