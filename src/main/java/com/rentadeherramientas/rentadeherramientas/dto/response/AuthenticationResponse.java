@@ -55,4 +55,16 @@ public class AuthenticationResponse implements RegisteredUser {
     public void setRole(RoleName name) {
         this.role = name;
     }
+
+    public RoleName getRole() {
+        return role;
+    }
+    
+    public void setAuthorities(Set<String> authorities) {
+        this.authorities = authorities;
+    }
+    
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

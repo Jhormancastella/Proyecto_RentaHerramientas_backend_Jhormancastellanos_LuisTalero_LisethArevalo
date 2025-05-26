@@ -98,4 +98,9 @@ public User updateUserStatus(Long id, boolean active) {
     user.setActive(active);
     return userRepository.save(user);
 }
+
+public User updateUser(String username, User user) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'updateUser'");
+}
 }
