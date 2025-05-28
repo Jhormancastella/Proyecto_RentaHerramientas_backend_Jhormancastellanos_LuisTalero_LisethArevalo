@@ -11,30 +11,44 @@ Este proyecto tiene como objetivo desarrollar una Plataforma de Renta de Herrami
 > **Frontend Repository**: [GitHub Link](https://github.com/Jhormancastella/Proyecto_RentaHerramientas_Frontend_Jhormancastellanos_LuisTalero_LisethArevalo)
 
 ## ![image](https://github.com/user-attachments/assets/4eab21da-d5db-4c13-abe5-12d716d5dcf9) Ejecución del Proyecto atraves de postman.
-- ## endpoints
+- ## endpoints login.
 ```bash
+http://localhost:8000/api/auth/authenticate
 ```
-- ## endpoints
+- ### formato json para prueba.
+  
+ ```bash
+  
+{
+    "username": "admin",
+    "password": "admin123"
+}
+
+  ```
+- ## endpoints user(provedor o usuario normal)
 ```bash
+http://localhost:8000/api/users
 ```
-- ## endpoints
+- ### formato json para prueba.
 ```bash
+  {
+    "username": "nuevo_proveedor",
+    "firstName": "Nombre",
+    "lastName": "Apellido",
+    "email": "proveedor@example.com",
+    "password": "password123",
+    "roles": [{"id": 3, "name": "ROLE_PROVIDER"}]
+}
 ```
-- ## endpoints
+- ## endpoints productos.
 ```bash
+http://localhost:8000/api/productos
 ```
-- ## endpoints
-```bash
-```
-- ## endpoints
-```bash
-```
-- ## endpoints
-```bash
-```
-- ## endpoints-
-```bash
-```
+- ### formato json para prueba.
+  
+ ```bash
+
+  ```
 ## 🚀 Ejecución del Proyecto 
 
 ## clonar los siguientes repositorios
