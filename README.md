@@ -10,7 +10,32 @@ Este proyecto tiene como objetivo desarrollar una Plataforma de Renta de Herrami
 
 > **Frontend Repository**: [GitHub Link](https://github.com/Jhormancastella/Proyecto_RentaHerramientas_Frontend_Jhormancastellanos_LuisTalero_LisethArevalo)
 
-## 🚀 Ejecución del Proyecto
+## ![image](https://github.com/user-attachments/assets/4eab21da-d5db-4c13-abe5-12d716d5dcf9) Ejecución del Proyecto atraves de postman.
+- ## endpoints
+```bash
+```
+- ## endpoints
+```bash
+```
+- ## endpoints
+```bash
+```
+- ## endpoints
+```bash
+```
+- ## endpoints
+```bash
+```
+- ## endpoints
+```bash
+```
+- ## endpoints
+```bash
+```
+- ## endpoints-
+```bash
+```
+## 🚀 Ejecución del Proyecto 
 
 ## clonar los siguientes repositorios
 
