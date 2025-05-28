@@ -31,13 +31,13 @@ public class AdminController {
     // Obtener proveedores
     @GetMapping("/providers")
     public ResponseEntity<List<User>> getAllProviders() {
-        return ResponseEntity.ok(userService.getUsersByRole("PROVIDER"));
+        return ResponseEntity.ok(userService.getUsersByRole("provide"));
     }
 
     // Obtener clientes
     @GetMapping("/clients")
     public ResponseEntity<List<User>> getAllClients() {
-        return ResponseEntity.ok(userService.getUsersByRole("CLIENT"));
+        return ResponseEntity.ok(userService.getUsersByRole("user"));
     }
 
     // Actualizar estado de usuario

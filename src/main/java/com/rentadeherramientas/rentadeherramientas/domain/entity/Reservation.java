@@ -25,8 +25,8 @@ public class Reservation {
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "tool_id", nullable = false)
-    private Tool tool;
+    @JoinColumn(name = "product_id", nullable = false)
+    private Producto producto;
 
     @NotNull
     private LocalDateTime startDate;

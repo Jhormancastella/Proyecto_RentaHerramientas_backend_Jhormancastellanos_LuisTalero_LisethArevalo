@@ -29,15 +29,19 @@ public class ReservaController {
     @GetMapping("/{id}")
     public ResponseEntity<Reservation> getReservaById(@PathVariable Long id) {
         return reservationService.getReservationById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
-    }
+            .map(ResponseEntity::ok)
+            .orElse(ResponseEntity.notFound().build());
+        }
 
-    @PostMapping
-    public ResponseEntity<Reservation> createReserva(@RequestBody Reservation reservation) {
-        Reservation createdReservation = reservationService.createReservation(reservation);
-        return ResponseEntity.ok(createdReservation);
-    }
+        @PostMapping
+        public ResponseEntity<Reservation> createReserva(@RequestBody Reservation reservation) {
+        try {
+            Reservation created = reservationService.createReservation(reservation);
+            return ResponseEntity.ok(created);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(null);
+        }
+        }
 
     @PutMapping("/{id}")
     public ResponseEntity<Reservation> updateReserva(@PathVariable Long id, @RequestBody Reservation reservation) {

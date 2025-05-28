@@ -5,6 +5,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.UUID;
+import java.util.List;
+
 import com.rentadeherramientas.rentadeherramientas.domain.entity.*;
 import com.rentadeherramientas.rentadeherramientas.infrastructure.repositories.*;
 
@@ -18,6 +23,8 @@ public class DataSeeder implements CommandLineRunner {
     @Autowired private ProveedorRepository proveedorRepository;
     @Autowired private ProductoRepository productoRepository;
     @Autowired private PasswordEncoder passwordEncoder;
+    @Autowired private PaymentRepository paymentRepository;
+    @Autowired private ReservationRepository reservationRepository;
 
     @Override
     @Transactional
@@ -30,7 +37,7 @@ public class DataSeeder implements CommandLineRunner {
         Role proveedorRole = roleRepository.findByName(RoleName.ROLE_PROVIDER)
             .orElseGet(() -> roleRepository.save(new Role(RoleName.ROLE_PROVIDER)));
 
-        // Usuarios administradores
+
         String adminUsername = "admin";
         if (!userRepository.existsByUsername(adminUsername)) {
             User admin = new User();
@@ -44,7 +51,7 @@ public class DataSeeder implements CommandLineRunner {
             userRepository.save(admin);
         }
 
-        // Usuarios normales
+        // Usuarios normales (se mantiene igual)
         for (int i = 1; i <= 5; i++) {
             String username = "user" + i;
             if (!userRepository.existsByUsername(username)) {
@@ -60,7 +67,7 @@ public class DataSeeder implements CommandLineRunner {
             }
         }
 
-        // Proveedores (usuarios con rol proveedor)
+        // Proveedores (usuarios con rol proveedor) (se mantiene igual)
         for (int i = 1; i <= 5; i++) {
             String username = "proveedor" + i;
             if (!userRepository.existsByUsername(username)) {
@@ -76,7 +83,7 @@ public class DataSeeder implements CommandLineRunner {
             }
         }
 
-        // Proveedores (entidad)
+        // Proveedores (entidad) (se mantiene igual)
         for (int i = 1; i <= 5; i++) {
             String nombre = "Proveedor" + i;
             if (!proveedorRepository.existsByNombre(nombre)) {
@@ -91,7 +98,7 @@ public class DataSeeder implements CommandLineRunner {
             }
         }
 
-        // Productos
+        // Productos (se mantiene igual)
         String[] nombres = {"Martillo", "Taladro", "Sierra", "Destornillador", "Alicate"};
         String[] descripciones = {
             "Martillo de acero", "Taladro eléctrico", "Sierra manual", "Destornillador de estrella", "Alicate universal"
@@ -108,6 +115,71 @@ public class DataSeeder implements CommandLineRunner {
                 prod.setDisponible(true);
                 productoRepository.save(prod);
             }
+        }
+
+        User user = userRepository.findByUsername("user1").orElse(null);
+        List<Producto> productos = productoRepository.findAll();
+
+        if (user != null && !productos.isEmpty()) {
+            for (int i = 1; i <= 5; i++) {
+                Reservation reservation = new Reservation();
+                reservation.setUser(user);
+                reservation.setProducto(productos.get(i % productos.size()));
+                reservation.setStartDate(LocalDateTime.now().plusDays(i * 2));
+                reservation.setEndDate(LocalDateTime.now().plusDays(i * 2 + 3));
+                reservation.setStatus(ReservationStatus.CONFIRMED);
+                reservation.setTotalAmount(BigDecimal.valueOf(5000.0 * i));
+                reservation.setNotes("Reserva de ejemplo " + i);
+                reservationRepository.save(reservation);
+            }
+        }
+
+
+        // Pagos (completamente corregido con todos los campos requeridos)
+        for (int i = 1; i <= 5; i++) {
+            Payment payment = new Payment();
+            
+            // Campos básicos
+            payment.setAmount(5000.0 * i);
+            payment.setPaymentDate(LocalDateTime.now().minusDays(i));
+            
+            // Campos de estado (status)
+            PaymentStatus status;
+            switch (i % 5) {
+                case 0: status = PaymentStatus.PENDING; break;
+                case 1: status = PaymentStatus.PROCESSING; break;
+                case 2: status = PaymentStatus.COMPLETED; break;
+                case 3: status = PaymentStatus.FAILED; break;
+                default: status = PaymentStatus.REFUNDED;
+            }
+            payment.setStatus(status);
+            
+            // Campos de método de pago (method)
+            PaymentMethod method;
+            switch (i % 5) {
+                case 0: method = PaymentMethod.CREDIT_CARD; break;
+                case 1: method = PaymentMethod.DEBIT_CARD; break;
+                case 2: method = PaymentMethod.CASH; break;
+                case 3: method = PaymentMethod.BANK_TRANSFER; break;
+                default: method = PaymentMethod.DIGITAL_WALLET;
+            }
+            payment.setMethod(method);
+            
+            // Campos adicionales requeridos
+            payment.setCreatedAt(LocalDateTime.now().minusDays(i));
+            payment.setUpdatedAt(LocalDateTime.now().minusDays(i));
+            payment.setTransactionId(UUID.randomUUID().toString());
+            payment.setPaymentDetails("Detalles del pago #" + i);
+            
+            // Relación con reserva
+            if (reservationRepository.count() > 0) {
+                List<Reservation> reservations = reservationRepository.findAll();
+                if (!reservations.isEmpty()) {
+                    payment.setReservation(reservations.get(i % reservations.size()));
+                }
+            }
+            
+            paymentRepository.save(payment);
         }
     }
 }
