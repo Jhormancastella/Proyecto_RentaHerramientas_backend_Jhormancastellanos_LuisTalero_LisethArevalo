@@ -10,8 +10,6 @@ Este proyecto tiene como objetivo desarrollar una Plataforma de Renta de Herrami
 
 > **Frontend Repository**: [GitHub Link](https://github.com/Jhormancastella/Proyecto_RentaHerramientas_Frontend_Jhormancastellanos_LuisTalero_LisethArevalo)
 
-Aquí tienes una versión más clara y visualmente atractiva para tu sección del `README.md`, con emojis, formato consistente y correcciones ortográficas:
-
 ---
 
 ## 🛠️ Antes de ejecutar el Backend
@@ -73,9 +71,6 @@ http://localhost:8000/api/users
     "roles": [{"id": 3, "name": "ROLE_PROVIDER"}]
 }
 ```
----
-Perfecto. Aquí tienes una sección lista para añadir a tu `README.md`, con un enlace para descargar y abrir directamente la colección de Postman:
-
 ---
 
 ## 📬 Archivo para usar los métodos en Postman
