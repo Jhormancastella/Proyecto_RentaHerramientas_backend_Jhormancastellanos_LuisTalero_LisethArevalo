@@ -79,7 +79,7 @@ Puedes importar fácilmente todos los endpoints del proyecto en Postman utilizan
 
 ### 📁 Descargar colección de Postman
 
-[📥 Click aquí para descargar `RentTools.postman_collection.json`]([./RentTools.postman_collection.json](https://drive.google.com/file/d/1UYlrsbAVqWKX5WOvkhQV2THRwjGV4B_M/view?usp=sharing))
+[📥 Click aquí para descargar `RentTools.postman_collection.json`](https://drive.google.com/file/d/1UYlrsbAVqWKX5WOvkhQV2THRwjGV4B_M/view?usp=sharing)
 
 > Abre Postman y selecciona **"Import"** → **"Upload Files"**, luego selecciona el archivo descargado.
 
