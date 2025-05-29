@@ -56,7 +56,7 @@ http://localhost:8000/api/auth/authenticate
 }
 
   ```
-- ## endpoints user(provedor o usuario normal)
+- ## endpoints Registro(provedor o usuario normal)
 ```bash
 http://localhost:8000/api/users
 ```
